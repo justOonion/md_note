@@ -1,0 +1,11 @@
+## 暗黑模式下 chrome保持亮色主题
+开启：
+```defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool YES```
+关闭：
+```defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool NO```
+
+
+
+## HHKB 键位排布
+[goto...](http://www.tmk-kbd.com/tmk_keyboard/editor/unimap/?hhkb_rn42#456C4oOW4Kmg6biL5oKGcOOOiNeA5rWMxoDjkr/suIDrg6DirI7GsO6Au+C4gOeEkOKMlcyw7YOu4LCz6IyB4428752i4LGI15HsuoHqlKbtt6jjgInsjofquJ7lsbnvh6DinrHhuaTnqZHujYfrtJ7grprumaDssbrmmb3poI7msZnppabplZjuma/lpoLsiITkoIziv6zipKTkmYjkpYjklYXmoY/koYfsroLkl4Lkn4jkopzkiYbkiY/qlqfojpDkvoXmnpvpkZjliZvpgZzlhZrllZ7llZnlnZ/puKrloYDqqZbqrqfqoqDmo4jkiYjmiajqmaDjpaXmuorlk47krJ3slL7jg63jlY7kr4XjrYbklYvorYzklYHrqK7irYnkrYPklYXslYfsl4rnvLLptLnnqbXjiY/kiYfila7kroDrhYfsuYDihLHkmY7kpY7kjYvkvYXsj43koazgqL3hsoDqlqDvgqztnLXpgKHkpKDkoIjqoIfnqK3hmJ/lhqvtlrHilKzmtZ/hsZPsk6PopZjiiZDigYbjirnlsqjvnaHrooLklY7rqqjrg4fmmbHtpYLso5HkspTisZ3grLDmj47sqIvvkpzutrrel+aRk++KhOWTgeSnkemjieiQqumniuqukuqVneeQlOKNleSzteS6v+Wps+2RquC1qu+EseuzkOaotOmoreeTjOC2teWtgO6HkOuhkO6og+yzneaytOevreO7qemWt+2Nr++ZuuOVgeiDouuvnOG5luico+iakemhoOO0n+i3uuKNie+NouaYvum1juaeg+2nuO65uu2Io+izhuqMqe6LruuSuum0tOOMq+amiu2lu+i+mOS3luasje6bmeeCv+Slru2eq++Xsuy9q+uyn+67t+Wtg+iHpei2s+Wxreeth+u2ju22uOefm+G1lumei+iXoO6VvuutnuGop+Gmne2ZsOuAhe+IgA==)
+
