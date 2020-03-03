@@ -2,7 +2,7 @@
 git 是分布式仓库结构，在git中，工作区本身就是仓库。也就是说开发者拥有自己的仓库，它们之间不存在结构层面的上下关系，所有仓库都是并行存在的。
 
 ## 本地仓库的操作
-```git init``` 创建新的仓库
+```git init``` 当前文件夹创建为新的仓库
 
 ### 必要的git设置
 添加当前仓库使用用户信息 name、email
@@ -55,8 +55,11 @@ git config --system user.name "chencheng"
 ```git reset --hard HEAD~1``` 同上，区别是工作区代码也被恢复了
 
 ### 为提交加标签
-```git tag tag1 HEAD```为最新的提交版本 打上标记tag1
+```git tag tag1 [HEAD|HEAD^|commitId]```为最新的提交版本 打上标记tag1
 ```git tag -l``` 显示标签列表
+```git push origin tagName:refs/tags/tagName``` 远程提交标签
+```git tag -d tagName``` 本地删除标签
+```git push origin :refs/tags/tagName``` 远程删除标签
 
 ### 创建分支
 ```git branch branch1 tag1``` 以标签tag1为起点，创建名为branch1x的分支
@@ -110,8 +113,8 @@ graph LR;
  ```git push origin tag1```
   **push所有tag，命令格式为**：```git push [origin] --tags```
 
-### 获取远程tag X
-```git fetch origin tag X```
+### 获取远程tag  tag-X
+```git fetch origin tag tag-X```
 
 ### push本地分支branchLocal到服务器
 ```git push origin branchLocal```
@@ -131,9 +134,12 @@ graph LR;
 	git push origin dev
 ```
 
-
-
-
+### push一个已经存在的文件夹 到指定的远程仓库下
+``` shell
+git init
+git remote add origin https://github.com/justOonion/myCase.git
+git push -u origin master
+```
 
 
 
