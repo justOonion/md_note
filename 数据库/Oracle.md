@@ -40,7 +40,12 @@ create synonym T_DC_BILL_LIST for DC_BILL.T_DC_BILL_LIST;
 create synonym T_DC_BILL_HEAD for DC_BILL.T_DC_BILL_HEAD;
 ```
 
+
+
+
+
 ### oracle解锁
+
 ``` sql
 select s.machine sourse_host,p.SPID PID,l.session_id sid,s.serial#,l.locked_mode,l.oracle_username,s.user#,l.os_user_name,s.terminal,a.sql_text,a.action from
 v$sqlarea a,v$session s, v$locked_object l,sys.v_$process p
@@ -95,4 +100,48 @@ where t.sql_text like '%table_name%'
 order by t.FIRST_LOAD_TIME desc;
 -- 数据库启动记录
 select t.database_status, t.instance_name, t.startup_time, t.host_name from v$instance t;
+```
+
+
+
+### oracle根据约束名查找 哪张表 哪个字段约束信息
+
+```sql
+SELECT A.CONSTRAINT_NAME,A.TABLE_NAME,A.COLUMN_NAME,B.CONSTRAINT_TYPE FROM USER_CONS_COLUMNS A, USER_CONSTRAINTS B WHERE A.CONSTRAINT_NAME =B.CONSTRAINT_NAME and a.constraint_name LIKE '%SYS_C00351160%'
+```
+
+
+
+### merge into的用法
+
+```sql
+-- 主要用于批量更新场景（存在update，不存在insert）
+merge into T_MAIN_TABLE m
+using T_OTHER_TABLE o
+on (m.fKey = o.pKey)
+WHEN MATCHED THEN
+    update
+        set m.col1 = o.col1
+            m.col2 = o.col2
+    where m.sid in ('id1','id2')
+WHEN NOT MATCHED THEN
+	  insert(cols...) values (vals...);
+```
+
+### 数据恢复
+```sql
+alter table T_ERP_BOM_ORIGINAL enable row movement;
+flashback table cfg_business_adapter to timestamp to_timestamp('20160923 10:00:00','YYYYMMDD HH24:MI:SS'); 
+```
+
+### 创建用户
+```sql
+--创建 gwstd_htt 用户
+  create user gwstd_htt
+  identified by "eport"
+  default tablespace USERS
+  temporary tablespace TEMP
+  profile DEFAULT;
+
+grant all privileges to gwstd_htt;
 ```

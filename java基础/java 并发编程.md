@@ -161,7 +161,9 @@ System.out.println(sumTask.join());
 
 
 ### CountDownLatch （await、countDown）
-CountDownLatch这个类能够使一个线程等待其他线程完成各自的工作再执行；例如，应用程序的主线程希望在负责启动框架服务的线程已经启动所有的框架服务之后再执行；
+CountDownLatch这个类能够 **使一个线程等待其他线程完成后再执行**；
+
+例如，主线程希望 在 **所有辅助线程** 全部执行完成之后再执行；
 
 
 

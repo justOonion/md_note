@@ -1,10 +1,12 @@
-```tar -xvf file.tar```
-```jar -xvf file.jar```
+```shell
+tar -xvf file.tar
+jar -xvf file.jar
+```
 
 ```zip``` 
-文件夹压缩 : ```zip -r test.zip test/```
-```unzip```
-
+文件夹压缩 : 
+```zip -r test.zip test/```
+```unzip test.zip -d ./test/```
 
 **压缩**
 
@@ -34,7 +36,7 @@
 
 ```tar -xjvf file.tar.bz2```   //解压 tar.bz2
 
-```tar -xZvf file.tar.Z```   //解压tar.Z
+```tar -xZvf file.tar.Z```    //解压tar.Z   **-C 指定目录解压**
 
 ```unrar e file.rar``` //解压rar
 

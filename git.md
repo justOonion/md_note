@@ -1,5 +1,10 @@
-### git
-git 是分布式仓库结构，在git中，工作区本身就是仓库。也就是说开发者拥有自己的仓库，它们之间不存在结构层面的上下关系，所有仓库都是并行存在的。
+git
+
+git 是分布式仓库结构，
+**在git中，工作区本身就是仓库。**
+**也就是说开发者拥有自己的仓库，它们之间不存在结构层面的上下关系，所有仓库都是并行存在的**。
+
+
 
 ## 本地仓库的操作
 ```git init``` 当前文件夹创建为新的仓库
@@ -31,11 +36,11 @@ git config --system user.name "chencheng"
 ```git ls-files``` 查看**git**管理范围内的文件
 
 ```git diff```
-工作区             缓存区          本地仓库
-  \ ———V———/ \———V———/
-         ```git diff```    ```git diff --cached```
-     \—————V—————/
-               ```git diff HEAD```
+工作区                 缓存区          本地仓库
+  \ ———V———/        \———V———/
+     ```git diff```       ```git diff --cached```
+            \—————V—————/
+                   ```git diff HEAD```
 
 ### 查看提交记录
 **git log** 默认显示所有log记录， 以下<hash>只需输入一定长度（但至少4个字符）
@@ -114,10 +119,17 @@ graph LR;
   **push所有tag，命令格式为**：```git push [origin] --tags```
 
 ### 获取远程tag  tag-X
-```git fetch origin tag tag-X```
+```shell
+git fetch origin tag tag-X
+# or
+git fetch origin 
+
+```
 
 ### push本地分支branchLocal到服务器
-```git push origin branchLocal```
+```shell
+git push origin branchLocal
+```
 
 ### 获取远程分支
 ```git pull origin <远程分支名>:<本地分支名>```
@@ -143,23 +155,65 @@ git push -u origin master
 
 
 
+### 合并某一次提交
+```shell
+# commit_ID1、commit_ID2 为另一个分支的某个提交，无需指定分支名
+git cherry-pick commit_ID1 commit_ID2 
+```
+
+### 合并分支 otherBranch 中 某个文件、文件夹
+```shell
+git checkout otherBranch file1 dir2
+```
+### 当前分支 集成多次提交为一次提交
+```shell
+git rebase -i HEAD~n #集成当前提交 前n次提交 为一次提交
+# pick --> s (squash) --> x
+# edit commit msg --> x
+```
+
+### 合并分支
+```shell
+git pull --rebase # git fetch --> git rebase
+git pull  #git fetch --> git merge
+```
 
 
 
+### Local仓库 关联 remote仓库
+```shell
+git init #初始化本地仓库
+git remote add origin ${remoteUrl}
+git push -f origin master #提交到远程仓库master分支
+```
 
 
 
+### git合并的正确姿势
+```shell
+# dev开发主分支 local本地分支
+git checkout dev #切到dev分支
+git pull origin dev #拉取dev最新代码
+git checkout local # 切到local分支
+git rebase -i HEAD~2 #合并提交 --- 2表示合并两个 (pick-->s , 合并提交信息保存即可)
+git rebase dev # !!! 将dev代码合并到当前分支local   -->解决冲突-->git rebase --continue
+git checkout dev #切换到dev分支
+git merge local #merge local分支 -> dev
+git push origin dev:dev # push
+```
 
 
+```shell
+git revert commitId #撤销某次提交
+git reset --soft/mixed/hard commitId #重置到某次提交 
+# --soft 干掉本地仓库 代码恢复为commit 之前的状态
+#--mixed（默认）干掉本地仓库、暂存区 代码恢复到add 之前的状态
+#--hard 干掉本地仓库、暂存区、工作区，代码恢复到修改钱的状态
+```
 
 
-
-
-
-
-
-
-
-
-
+```shell
+# git add . 忽略某个文件
+git add . -- ':!vue.config.js'
+```
 
